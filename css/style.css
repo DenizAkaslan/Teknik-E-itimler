@@ -1,0 +1,217 @@
+:root {
+  --cement-dark: #2B2E33;
+  --cement-gray: #6E7378;
+  --cement-light: #F2F2F0;
+  --brand-orange: #E85D2B;
+  --brand-orange-dark: #C2481E;
+  --white: #FFFFFF;
+  --badge-must: #D32F2F;
+  --badge-must-bg: #FDE8E8;
+  --badge-basic: #546E7A;
+  --badge-basic-bg: #EAEEF0;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--cement-light);
+  color: var(--cement-dark);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: contain;
+}
+
+#app { min-height: 100%; display: flex; flex-direction: column; }
+
+/* ---------- Toolbar ---------- */
+.toolbar {
+  background: var(--brand-orange);
+  color: var(--white);
+  padding: calc(14px + var(--safe-top)) 16px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.toolbar .back-btn {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 22px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  display: none;
+}
+
+.toolbar.has-back .back-btn { display: inline-block; }
+
+.toolbar h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* ---------- Content ---------- */
+.content {
+  flex: 1;
+  padding: 14px 14px calc(24px + var(--safe-bottom));
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ---------- Category & Training cards ---------- */
+.card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform .08s ease;
+}
+.card:active { transform: scale(0.98); }
+
+.card h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 700;
+}
+.card p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--cement-gray);
+}
+.card .meta {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--brand-orange);
+  font-weight: 600;
+}
+
+.training-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.training-card .icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  color: var(--brand-orange);
+}
+.training-card .body { flex: 1; min-width: 0; }
+.training-card h3 { font-size: 15.5px; }
+
+.badge {
+  flex-shrink: 0;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.badge.must { background: var(--badge-must-bg); color: var(--badge-must); }
+.badge.basic { background: var(--badge-basic-bg); color: var(--badge-basic); }
+
+/* ---------- Filter chips ---------- */
+.chip-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 2px 14px;
+}
+.chip {
+  border: 1.5px solid var(--cement-gray);
+  color: var(--cement-dark);
+  background: var(--white);
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.chip.active {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: var(--white);
+}
+
+/* ---------- Empty state ---------- */
+.empty {
+  text-align: center;
+  color: var(--cement-gray);
+  padding: 40px 16px;
+  font-size: 14px;
+}
+
+/* ---------- PDF viewer ---------- */
+.pdf-frame {
+  width: 100%;
+  height: calc(100vh - 60px - var(--safe-top));
+  border: none;
+  background: var(--cement-dark);
+  display: block;
+}
+
+/* ---------- Install banner ---------- */
+.install-banner {
+  position: fixed;
+  left: 14px;
+  right: 14px;
+  bottom: calc(14px + var(--safe-bottom));
+  background: var(--cement-dark);
+  color: var(--white);
+  padding: 12px 14px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  z-index: 20;
+  font-size: 13.5px;
+}
+.install-banner button {
+  background: var(--brand-orange);
+  color: var(--white);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.install-banner .dismiss {
+  background: none;
+  color: var(--cement-gray);
+  font-size: 18px;
+  padding: 0 4px;
+}
+
+.offline-pill {
+  position: fixed;
+  top: calc(10px + var(--safe-top));
+  right: 10px;
+  background: var(--badge-must);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 30;
+  display: none;
+}
+.offline-pill.show { display: block; }

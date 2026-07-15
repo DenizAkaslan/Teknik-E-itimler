@@ -1,0 +1,277 @@
+{
+  "categories": [
+    {
+      "id": "sinif_egitimi",
+      "name": "Sınıf Eğitimi",
+      "description": "Teorik / sınıf ortamında verilen eğitimler",
+      "trainings": [
+        {
+          "id": "yaglama",
+          "title": "Yağlama",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "yaglama.pdf"
+        },
+        {
+          "id": "eked",
+          "title": "Eked",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "eked.pdf"
+        },
+        {
+          "id": "buhar_kazani",
+          "title": "Buhar Kazanı",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "buhar_kazani.pdf"
+        },
+        {
+          "id": "celik_bantlar",
+          "title": "Çelik Bantlar",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "celik_bantlar.pdf"
+        },
+        {
+          "id": "dozajli_besleyiciler",
+          "title": "Dozajlı Besleyiciler",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "dozajli_besleyiciler.pdf"
+        },
+        {
+          "id": "acik_dolum_cihazi_bakimi",
+          "title": "Açık Dolum Cihazı Bakımı",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "acik_dolum_cihazi_bakimi.pdf"
+        },
+        {
+          "id": "sarsak_elek_kontrol_ve_bakimlari",
+          "title": "Sarsak Elek Kontrol Ve Bakımları",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "sarsak_elek_kontrol_ve_bakimlari.pdf"
+        },
+        {
+          "id": "kesek_kiricilar",
+          "title": "Kesek Kırıcılar",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "kesek_kiricilar.pdf"
+        },
+        {
+          "id": "alev_borusu_kontrolu_ve_kullanimi",
+          "title": "Alev Borusu Kontrolü Ve Kullanımı",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "alev_borusu_kontrolu_ve_kullanimi.pdf"
+        },
+        {
+          "id": "kirici_kaziyici_yigici_ve_bant_yollari",
+          "title": "Kırıcı - Kazıyıcı - Yığıcı Ve Bant Yolları",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "kirici_kaziyici_yigici_ve_bant_yollari.pdf"
+        },
+        {
+          "id": "atik_besleme_sistemleri",
+          "title": "Atık Besleme Sistemleri",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "atik_besleme_sistemleri.pdf"
+        }
+      ]
+    },
+    {
+      "id": "uygulamali",
+      "name": "Uygulamalı",
+      "description": "Sahada uygulamalı olarak verilen eğitimler",
+      "trainings": [
+        {
+          "id": "sizdirmazlik",
+          "title": "Sızdırmazlık",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "sizdirmazlik.pdf"
+        },
+        {
+          "id": "havali_bantlar",
+          "title": "Havalı Bantlar",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "havali_bantlar.pdf"
+        },
+        {
+          "id": "torbali_filtre_genel_bakimlari",
+          "title": "Torbalı Filtre Genel Bakımları",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "torbali_filtre_genel_bakimlari.pdf"
+        },
+        {
+          "id": "klapeler",
+          "title": "Klapeler",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "klapeler.pdf"
+        },
+        {
+          "id": "bunker_kontrol_ve_temizligi",
+          "title": "Bunker Kontrol Ve Temizliği",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "bunker_kontrol_ve_temizligi.pdf"
+        },
+        {
+          "id": "gezervinc_kontrol_ve_bakimi",
+          "title": "Gezervinç Kontrol Ve Bakımı",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "gezervinc_kontrol_ve_bakimi.pdf"
+        },
+        {
+          "id": "siklon",
+          "title": "Siklon",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "siklon.pdf"
+        },
+        {
+          "id": "seperator",
+          "title": "Seperatör",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "seperator.pdf"
+        },
+        {
+          "id": "degirmenin_plakasi",
+          "title": "Değirmenin Plakası",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "degirmenin_plakasi.pdf"
+        }
+      ]
+    },
+    {
+      "id": "cimsa_akademi",
+      "name": "Çimsa Akademi",
+      "description": "Çimsa Akademi bünyesinde verilen eğitimler",
+      "trainings": [
+        {
+          "id": "kompresorler",
+          "title": "Kompresörler",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "kompresorler.pdf"
+        },
+        {
+          "id": "blowerlar",
+          "title": "Blowerlar",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "blowerlar.pdf"
+        },
+        {
+          "id": "yukleme_banti",
+          "title": "Yükleme Bantı",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "yukleme_banti.pdf"
+        }
+      ]
+    },
+    {
+      "id": "cimsa_ustam_usta_ile_6_aylik_planli_egitim",
+      "name": "Çimsa Ustam Usta ile 6 Aylık Planlı Eğitim",
+      "description": "Usta çalışan eşliğinde 6 aylık planlı saha eğitimi",
+      "trainings": [
+        {
+          "id": "fan_bakim_degisimi",
+          "title": "Fan Bakım-Değişimi",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "fan_bakim_degisimi.pdf"
+        },
+        {
+          "id": "patlac_kontrol_ve_bakimi",
+          "title": "Patlaç Kontrol Ve Bakımı",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "patlac_kontrol_ve_bakimi.pdf"
+        },
+        {
+          "id": "hucre_tekeri_kontrol_ve_bakimlari",
+          "title": "Hücre Tekeri Kontrol Ve Bakımları",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "hucre_tekeri_kontrol_ve_bakimlari.pdf"
+        },
+        {
+          "id": "paletli_bantlar",
+          "title": "Paletli Bantlar",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "paletli_bantlar.pdf"
+        },
+        {
+          "id": "sogutma_kulesi",
+          "title": "Soğutma Kulesi",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "sogutma_kulesi.pdf"
+        },
+        {
+          "id": "doner_firin_operatorlugu",
+          "title": "Döner Fırın Operatörlüğü",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "doner_firin_operatorlugu.pdf"
+        },
+        {
+          "id": "degirmen_operatorlugu",
+          "title": "Değirmen Operatörlüğü",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "degirmen_operatorlugu.pdf"
+        },
+        {
+          "id": "kovali_tasiyicilar",
+          "title": "Kovalı Taşıyıcılar",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "kovali_tasiyicilar.pdf"
+        },
+        {
+          "id": "intikal_canak_sisleme",
+          "title": "İntikal - Çanak Şişleme",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "intikal_canak_sisleme.pdf"
+        },
+        {
+          "id": "siklon_acma",
+          "title": "Siklon Açma",
+          "description": "",
+          "level": "BASIC",
+          "pdfFileName": "siklon_acma.pdf"
+        }
+      ]
+    },
+    {
+      "id": "anlasmali_kurumlar_tarafindan_egitim",
+      "name": "Anlaşmalı Kurumlar Tarafından Eğitim",
+      "description": "Dış eğitim kurumları tarafından verilen eğitimler",
+      "trainings": [
+        {
+          "id": "su_jeti_kullanma",
+          "title": "Su Jeti Kullanma",
+          "description": "",
+          "level": "MUST",
+          "pdfFileName": "su_jeti_kullanma.pdf"
+        }
+      ]
+    }
+  ]
+}
