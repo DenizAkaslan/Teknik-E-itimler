@@ -6,11 +6,12 @@
 
   var CATEGORY_LABELS = {
     talimatnameler: "Talimatnameler",
-    egitimler: "Eğitimler"
+    egitimler: "Eğitimler",
+    cimsaustam: "Çimsa Ustam Eğitimleri"
   };
 
   var state = {
-    data: { talimatnameler: [], egitimler: [] },
+    data: { talimatnameler: [], egitimler: [], cimsaustam: [] },
     currentCategory: null
   };
 
@@ -78,6 +79,7 @@
       .then(function (json) {
         state.data.talimatnameler = json.talimatnameler || [];
         state.data.egitimler = json.egitimler || [];
+        state.data.cimsaustam = json.cimsaustam || [];
         updateCounts();
         // If a list view is currently open, refresh it
         if (state.currentCategory) renderList(state.currentCategory);
@@ -93,6 +95,8 @@
       state.data.talimatnameler.length + " doküman";
     document.getElementById("count-egitimler").textContent =
       state.data.egitimler.length + " doküman";
+    document.getElementById("count-cimsaustam").textContent =
+      state.data.cimsaustam.length + " doküman";
   }
 
   // ---------------- Turkish-aware text normalize ----------------
@@ -115,7 +119,7 @@
   // ---------------- Routing ----------------
   function handleInitialRoute() {
     var hash = window.location.hash.replace("#", "");
-    if (hash === "talimatnameler" || hash === "egitimler") {
+    if (CATEGORY_LABELS.hasOwnProperty(hash)) {
       openCategory(hash, false);
     }
   }
@@ -264,7 +268,7 @@
 
     window.addEventListener("hashchange", function () {
       var hash = window.location.hash.replace("#", "");
-      if (hash === "talimatnameler" || hash === "egitimler") {
+      if (CATEGORY_LABELS.hasOwnProperty(hash)) {
         openCategory(hash, false);
       } else {
         showHome();
