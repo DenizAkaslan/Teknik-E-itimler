@@ -1,71 +1,81 @@
-const CACHE_NAME = "bakim-egitimleri-v1";
+// =========================================================
+// ÇİMENTO TEKNİK EĞİTİMLERİ — Service Worker
+// Uygulama kabuğunu (app shell) önbelleğe alır, dokümanları
+// önce ağdan, olmadığında önbellekten sunar.
+// =========================================================
+var CACHE_NAME = "cimento-pwa-v3";
 
-const APP_SHELL = [
+var APP_SHELL = [
   "./",
   "./index.html",
+  "./style.css",
+  "./app.js",
   "./manifest.json",
-  "./css/style.css",
-  "./js/app.js",
-  "./data/trainings.json",
+  "./data.json",
   "./icons/icon-192.png",
-  "./icons/icon-512.png"
+  "./icons/icon-512.png",
+  "./icons/apple-touch-icon.png"
 ];
 
-self.addEventListener("install", (event) => {
+self.addEventListener("install", function (event) {
   event.waitUntil(
-    (async () => {
-      const cache = await caches.open(CACHE_NAME);
-      await cache.addAll(APP_SHELL);
-
-      // trainings.json içindeki tüm PDF dosyalarını da önbelleğe al
-      try {
-        const res = await fetch("./data/trainings.json");
-        const data = await res.json();
-        const pdfUrls = [];
-        data.categories.forEach((cat) => {
-          cat.trainings.forEach((t) => {
-            pdfUrls.push(`./pdfs/${t.pdfFileName}`);
+    caches.open(CACHE_NAME).then(function (cache) {
+      // Cache each file independently: if one file is missing/renamed,
+      // the rest still get cached instead of the whole install failing.
+      return Promise.all(
+        APP_SHELL.map(function (url) {
+          return cache.add(url).catch(function (err) {
+            console.warn("Önbelleğe alınamadı:", url, err);
           });
-        });
-        await cache.addAll(pdfUrls);
-      } catch (e) {
-        // trainings.json henüz erişilemiyorsa sorun değil, sonraki fetch'lerde önbelleğe alınır
-      }
-
-      self.skipWaiting();
-    })()
-  );
-});
-
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    (async () => {
-      const keys = await caches.keys();
-      await Promise.all(
-        keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))
+        })
       );
-      self.clients.claim();
-    })()
+    }).then(function () { return self.skipWaiting(); })
   );
 });
 
-// Cache-first strateji: önbellekte varsa oradan ver, yoksa ağdan çekip önbelleğe ekle
-self.addEventListener("fetch", (event) => {
+self.addEventListener("activate", function (event) {
+  event.waitUntil(
+    caches.keys().then(function (keys) {
+      return Promise.all(
+        keys.filter(function (key) { return key !== CACHE_NAME; })
+            .map(function (key) { return caches.delete(key); })
+      );
+    }).then(function () { return self.clients.claim(); })
+  );
+});
+
+self.addEventListener("fetch", function (event) {
   if (event.request.method !== "GET") return;
 
-  event.respondWith(
-    (async () => {
-      const cached = await caches.match(event.request);
-      if (cached) return cached;
+  var url = new URL(event.request.url);
+  var isIcon = url.pathname.indexOf("/icons/") !== -1;
 
-      try {
-        const networkRes = await fetch(event.request);
-        const cache = await caches.open(CACHE_NAME);
-        cache.put(event.request, networkRes.clone());
-        return networkRes;
-      } catch (e) {
-        return cached || Response.error();
-      }
-    })()
+  if (isIcon) {
+    // Icons almost never change — cache-first is safe and fastest.
+    event.respondWith(
+      caches.match(event.request).then(function (cached) {
+        if (cached) return cached;
+        return fetch(event.request).then(function (response) {
+          var copy = response.clone();
+          caches.open(CACHE_NAME).then(function (cache) { cache.put(event.request, copy); });
+          return response;
+        });
+      })
+    );
+    return;
+  }
+
+  // Everything else — HTML, CSS, JS, manifest.json, data.json, docs/* —
+  // is network-first. This guarantees that after every update, visitors
+  // always get the current files instead of a stale mix of old/new
+  // versions. The cache is only used as an offline fallback.
+  event.respondWith(
+    fetch(event.request)
+      .then(function (response) {
+        var copy = response.clone();
+        caches.open(CACHE_NAME).then(function (cache) { cache.put(event.request, copy); });
+        return response;
+      })
+      .catch(function () { return caches.match(event.request); })
   );
 });
